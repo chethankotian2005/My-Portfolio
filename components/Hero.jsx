@@ -63,29 +63,44 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[calc(100vh-72px)] md:min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-deep-black px-4 py-12 md:py-20">
-      {/* Animated Gradient Background */}
+      {/* Animated Gradient Mesh Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Radial gradient spotlight */}
-        <div className="absolute inset-0 bg-gradient-radial opacity-20 dark:opacity-100"></div>
+        {/* Moving gradient mesh */}
+        <div 
+          className="absolute inset-0 opacity-30 dark:opacity-20"
+          style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+            backgroundSize: '300% 300%',
+            animation: 'gradientShift 15s ease infinite',
+          }}
+        />
         
-        {/* Floating geometric shapes */}
+        {/* Radial gradient spotlight */}
+        <div className="absolute inset-0 bg-gradient-radial opacity-40 dark:opacity-100"></div>
+        
+        {/* Floating geometric shapes with gradients */}
         <motion.div
           animate={{
-            y: [0, -20, 0],
-            rotate: [0, 10, 0],
+            y: [0, -30, 0],
+            rotate: [0, 15, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 6,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full blur-3xl opacity-50"
+          style={{
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%)',
+          }}
         ></motion.div>
         
         <motion.div
           animate={{
             y: [0, 30, 0],
             rotate: [0, -15, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
             duration: 8,
@@ -93,7 +108,10 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
+          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full blur-3xl opacity-50"
+          style={{
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
+          }}
         ></motion.div>
         
         <motion.div
@@ -122,47 +140,57 @@ export default function Hero() {
           animate="visible"
           className="text-center"
         >
-          {/* Profile Circle with Glow */}
+          {/* Profile Circle with 3D Effects */}
           <motion.div 
             variants={itemVariants} 
-            className="mb-12"
+            className="mb-12 perspective-1000"
           >
             <motion.div
               animate={{
                 y: [0, -15, 0],
+              }}
+              whileHover={{
+                scale: 1.05,
+                rotateY: 15,
+                rotateX: 10,
               }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="relative inline-block"
+              className="relative inline-block transform-gpu"
+              style={{
+                transformStyle: 'preserve-3d',
+              }}
             >
-              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow-lg relative overflow-hidden group cursor-pointer">
-                <Image
-                  src="/profile.png"
-                  alt="Chethan V Kotian"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover rounded-full"
-                  priority
-                />
+              <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full relative overflow-hidden group cursor-pointer shadow-2xl">
+                {/* Gradient border ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-primary p-1">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-deep-black">
+                    <Image
+                      src="/profile.png"
+                      alt="Chethan V Kotian"
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover rounded-full scale-105 group-hover:scale-110 transition-transform duration-500"
+                      priority
+                    />
+                  </div>
+                </div>
+                
                 {/* Animated border glow */}
                 <motion.div
-                  className="absolute inset-0 rounded-full"
+                  className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-50 blur-xl"
                   animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(255, 255, 255, 0.4)',
-                      '0 0 40px rgba(255, 255, 255, 0.8)',
-                      '0 0 20px rgba(255, 255, 255, 0.4)',
-                    ],
+                    scale: [1, 1.1, 1],
                   }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                ></motion.div>
+                />
               </div>
             </motion.div>
           </motion.div>
@@ -213,11 +241,14 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
           >
-            <Link href="/projects">
+            <Link href="/projects" className="w-full sm:w-auto">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(100, 100, 100, 0.3)' }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)',
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-glow overflow-hidden w-full sm:w-auto"
+                className="group relative px-10 py-4 bg-gradient-primary text-white font-bold rounded-xl shadow-xl overflow-hidden w-full sm:w-auto transition-all duration-300 hover:shadow-2xl cursor-hover"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View Projects
@@ -232,26 +263,21 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </motion.svg>
                 </span>
+                {/* Ripple effect overlay */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black dark:from-white dark:to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  style={{ backgroundSize: '200% 200%' }}
-                ></motion.div>
+                  className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
               </motion.button>
             </Link>
             
-            <Link href="/contact">
+            <Link href="/contact" className="w-full sm:w-auto">
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 20px 40px rgba(139, 92, 246, 0.3)',
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-transparent text-black border-black hover:bg-black hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black border-2 font-bold rounded-xl transition-all duration-300 w-full sm:w-auto"
+                className="px-10 py-4 bg-white dark:bg-transparent text-primary-indigo dark:text-white border-2 border-primary-indigo dark:border-white font-bold rounded-xl transition-all duration-300 hover:bg-primary-indigo hover:text-white dark:hover:bg-white dark:hover:text-deep-black w-full sm:w-auto cursor-hover shadow-lg hover:shadow-xl"
               >
                 Hire Me
               </motion.button>

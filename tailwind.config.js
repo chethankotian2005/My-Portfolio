@@ -9,21 +9,39 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Deep Black Theme Colors
-        'deep-black': '#050505',
-        'secondary-black': '#0a0a0a',
-        'card-black': '#121212',
-        'border-gray': '#262626',
+        // Modern Professional Palette
+        // Dark Mode Backgrounds
+        'deep-black': '#0f172a', // Slate 900
+        'secondary-black': '#1e293b', // Slate 800
+        'card-black': '#1e293b',
+        'border-gray': '#334155', // Slate 700
         
-        // Accent Colors - Monochrome
-        'primary-indigo': 'rgb(var(--primary-indigo) / <alpha-value>)',
-        'secondary-purple': 'rgb(var(--secondary-purple) / <alpha-value>)',
-        'success-emerald': 'rgb(var(--success-emerald) / <alpha-value>)',
+        // Primary Color System (Indigo)
+        'primary-indigo': '#6366f1', // Indigo 500
+        'primary-indigo-light': '#818cf8', // Indigo 400
+        'primary-indigo-dark': '#4f46e5', // Indigo 600
+        
+        // Secondary Color System (Purple)
+        'secondary-purple': '#8b5cf6', // Purple 500
+        'secondary-purple-light': '#a78bfa', // Purple 400
+        'secondary-purple-dark': '#7c3aed', // Purple 600
+        
+        // Accent Color System (Pink)
+        'accent-pink': '#ec4899', // Pink 500
+        'accent-pink-light': '#f472b6', // Pink 400
+        'accent-pink-dark': '#db2777', // Pink 600
+        
+        // Success Color
+        'success-emerald': '#10b981', // Emerald 500
+        
+        // Light Mode Backgrounds
+        'light-bg': '#f8fafc', // Slate 50
+        'light-card': '#ffffff',
         
         // Text Colors
-        'text-primary': 'rgb(var(--foreground-rgb) / <alpha-value>)',
-        'text-secondary': 'rgb(var(--text-secondary) / <alpha-value>)',
-        'text-muted': 'rgb(var(--text-muted) / <alpha-value>)',
+        'text-primary': '#f1f5f9', // Slate 100
+        'text-secondary': '#cbd5e1', // Slate 300
+        'text-muted': '#94a3b8', // Slate 400
         
         // Keep existing primary for backward compatibility
         primary: {
@@ -74,7 +92,9 @@ module.exports = {
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
         'float': 'float 3s ease-in-out infinite',
         'gradient': 'gradient 3s ease infinite',
+        'gradient-shift': 'gradientShift 15s ease infinite',
         'typing': 'typing 3.5s steps(40, end)',
+        'bounce-slow': 'bounce 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -113,11 +133,18 @@ module.exports = {
           '0%': { width: '0' },
           '100%': { width: '100%' },
         },
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 70%)',
-        'gradient-primary': 'linear-gradient(135deg, #ffffff, #a3a3a3)',
-        'gradient-success': 'linear-gradient(135deg, #525252, #262626)',
+        'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+        'gradient-success': 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+        'gradient-mesh': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+        'gradient-hero': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
       },
     },
   },
