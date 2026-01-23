@@ -16,10 +16,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Reduce bundle size
-  experimental: {
-    optimizeCss: true,
-  },
   // Enable React strict mode for better development
   reactStrictMode: true,
   // Optimize power preference
