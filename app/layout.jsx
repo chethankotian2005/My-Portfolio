@@ -7,7 +7,6 @@ import ThemeScript from '@/components/ThemeScript';
 import ScrollProgress from '@/components/ScrollProgress';
 import ScrollToTop from '@/components/ScrollToTop';
 import CustomCursor from '@/components/CustomCursor';
-import CustomCursorEnhanced from '@/components/CustomCursorEnhanced';
 import FloatingContact from '@/components/FloatingContact';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -50,7 +49,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <ThemeScript />
           <ScrollProgress />
-          <CustomCursorEnhanced />
+          <CustomCursor />
           <ScrollToTop />
           <FloatingContact />
           <div className="flex flex-col min-h-screen bg-deep-black" style={{ cursor: 'none' }}>
