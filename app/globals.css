@@ -33,6 +33,10 @@ body {
   font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: auto;
 }
 
 /* Gradient animation keyframes */
@@ -63,6 +67,22 @@ body {
   .transform-gpu {
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -webkit-transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
   }
 }
 
@@ -99,9 +119,12 @@ body {
   background: #6366f1;
 }
 
-/* Smooth scroll */
+/* Smooth scroll - optimized for all devices */
 html {
   scroll-behavior: smooth;
+  /* Better scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 
 /* Hide default cursor on desktop - more selective approach */
@@ -156,12 +179,16 @@ html {
   background-clip: text;
 }
 
-/* Card styles */
+/* Card styles - GPU accelerated */
 .card-dark {
   background-color: #121212;
   border: 1px solid #262626;
   border-radius: 1rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 .light .card-dark {
@@ -171,22 +198,34 @@ html {
 }
 
 .card-hover {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
-.card-hover:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
-  transform: translateY(-0.5rem);
-  border-color: #ffffff;
+@media (hover: hover) {
+  .card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+    transform: translateY(-0.5rem) translateZ(0);
+    -webkit-transform: translateY(-0.5rem) translateZ(0);
+    border-color: #ffffff;
+  }
 }
 
-/* Glow effects */
+/* Glow effects - optimized */
 .glow-on-hover {
-  transition: all 0.3s ease;
+  transition: filter 0.3s ease;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-.glow-on-hover:hover {
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+@media (hover: hover) {
+  .glow-on-hover:hover {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+  }
 }
 
 .glow-border {
@@ -197,21 +236,33 @@ html {
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
-/* Button styles */
+/* Button styles - GPU accelerated */
 .btn-primary {
   background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
   color: #000000;
   font-weight: 600;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
-.btn-primary:hover {
-  filter: brightness(1.1);
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+@media (hover: hover) {
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05) translateZ(0);
+    -webkit-transform: scale(1.05) translateZ(0);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.btn-primary:active {
+  transform: scale(0.98) translateZ(0);
+  -webkit-transform: scale(0.98) translateZ(0);
 }
 
 .btn-outline {
@@ -220,14 +271,26 @@ html {
   font-weight: 600;
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   background: transparent;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
-.btn-outline:hover {
-  background-color: #ffffff;
-  color: #000000;
-  transform: scale(1.05);
+@media (hover: hover) {
+  .btn-outline:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05) translateZ(0);
+    -webkit-transform: scale(1.05) translateZ(0);
+  }
+}
+
+.btn-outline:active {
+  transform: scale(0.98) translateZ(0);
+  -webkit-transform: scale(0.98) translateZ(0);
 }
 
 /* Input styles */
@@ -288,12 +351,30 @@ a {
 button, a, [role="button"] {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  /* Improve touch response */
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Smooth transitions */
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Improve mobile scrolling */
+button:active, a:active, [role="button"]:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Improve mobile scrolling - optimized */
 body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  /* Better scroll performance */
+  scroll-behavior: smooth;
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Prevent text size adjustment on mobile */
@@ -492,5 +573,95 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Performance optimizations for all devices */
+* {
+  /* Improve rendering performance */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize images for better loading */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optimize video elements */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Force hardware acceleration on animated elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* Smooth font rendering on all devices */
+body, button, input, textarea {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Improve touch scrolling momentum */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* GPU-accelerated transforms */
+.animate-element {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Optimize backdrop filters for mobile */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .backdrop-blur-custom {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-custom {
+    background-color: rgba(var(--background-rgb), 0.95);
   }
 }

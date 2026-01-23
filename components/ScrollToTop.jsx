@@ -5,8 +5,15 @@ import { useState, useEffect } from 'react';
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+    checkMobile();
+
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
         setIsVisible(true);
@@ -15,8 +22,13 @@ export default function ScrollToTop() {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    // Use passive event listener for better scroll performance
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -36,7 +48,7 @@ export default function ScrollToTop() {
           whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(100, 100, 100, 0.4)' }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 bg-black text-white dark:bg-white dark:text-black rounded-full shadow-glow transition-all duration-300 group"
+          className="fixed bottom-8 right-8 z-50 p-4 bg-black text-white dark:bg-white dark:text-black rounded-full shadow-glow transition-all duration-300 group transform-gpu"
           aria-label="Scroll to top"
         >
           <motion.svg
@@ -44,7 +56,7 @@ export default function ScrollToTop() {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            animate={{ y: [0, -3, 0] }}
+            animate={isMobile ? {} : { y: [0, -3, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />

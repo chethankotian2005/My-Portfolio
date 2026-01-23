@@ -8,11 +8,12 @@ import { useState, useEffect, useMemo } from 'react';
 export default function Hero() {
   const [typedText, setTypedText] = useState('');
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const fullText = 'AI & Mobile Developer | Machine Learning Enthusiast';
 
   // Generate particles only once on mount to avoid hydration issues
   const particles = useMemo(() => {
-    if (!isMounted) return [];
+    if (!isMounted || isMobile) return [];
     return [...Array(20)].map((_, i) => ({
       id: i,
       left: Math.random() * 100,
@@ -20,10 +21,17 @@ export default function Hero() {
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 2,
     }));
-  }, [isMounted]);
+  }, [isMounted, isMobile]);
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // Detect mobile devices
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
     let currentIndex = 0;
     const typingInterval = setInterval(() => {
@@ -35,7 +43,10 @@ export default function Hero() {
       }
     }, 50);
 
-    return () => clearInterval(typingInterval);
+    return () => {
+      clearInterval(typingInterval);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const containerVariants = {
@@ -68,9 +79,9 @@ export default function Hero() {
         {/* Radial gradient spotlight */}
         <div className="absolute inset-0 bg-gradient-radial opacity-20 dark:opacity-100"></div>
         
-        {/* Floating geometric shapes */}
+        {/* Floating geometric shapes - reduced on mobile */}
         <motion.div
-          animate={{
+          animate={isMobile ? {} : {
             y: [0, -20, 0],
             rotate: [0, 10, 0],
           }}
@@ -79,11 +90,11 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-black/5 dark:bg-white/5 rounded-full blur-3xl transform-gpu"
         ></motion.div>
         
         <motion.div
-          animate={{
+          animate={isMobile ? {} : {
             y: [0, 30, 0],
             rotate: [0, -15, 0],
           }}
@@ -93,11 +104,11 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
+          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl transform-gpu"
         ></motion.div>
         
         <motion.div
-          animate={{
+          animate={isMobile ? {} : {
             y: [0, -25, 0],
             x: [0, 20, 0],
           }}
@@ -107,7 +118,7 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-black/5 dark:bg-white/5 rounded-full blur-3xl transform-gpu"
         ></motion.div>
 
         {/* Subtle grid pattern */}
@@ -128,7 +139,7 @@ export default function Hero() {
             className="mb-12"
           >
             <motion.div
-              animate={{
+              animate={isMobile ? {} : {
                 y: [0, -15, 0],
               }}
               transition={{
@@ -136,7 +147,7 @@ export default function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="relative inline-block"
+              className="relative inline-block transform-gpu"
             >
               <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow-lg relative overflow-hidden group cursor-pointer">
                 <Image
@@ -146,23 +157,26 @@ export default function Hero() {
                   height={128}
                   className="w-full h-full object-cover rounded-full"
                   priority
+                  loading="eager"
                 />
-                {/* Animated border glow */}
-                <motion.div
-                  className="absolute inset-0 rounded-full"
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(255, 255, 255, 0.4)',
-                      '0 0 40px rgba(255, 255, 255, 0.8)',
-                      '0 0 20px rgba(255, 255, 255, 0.4)',
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                ></motion.div>
+                {/* Animated border glow - reduced on mobile */}
+                {!isMobile && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full"
+                    animate={{
+                      boxShadow: [
+                        '0 0 20px rgba(255, 255, 255, 0.4)',
+                        '0 0 40px rgba(255, 255, 255, 0.8)',
+                        '0 0 20px rgba(255, 255, 255, 0.4)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  ></motion.div>
+                )}
               </div>
             </motion.div>
           </motion.div>
@@ -217,7 +231,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(100, 100, 100, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-glow overflow-hidden w-full sm:w-auto"
+                className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-glow overflow-hidden w-full sm:w-auto transform-gpu"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View Projects
@@ -226,24 +240,26 @@ export default function Hero() {
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    animate={{ x: [0, 5, 0] }}
+                    animate={isMobile ? {} : { x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </motion.svg>
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black dark:from-white dark:to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  style={{ backgroundSize: '200% 200%' }}
-                ></motion.div>
+                {!isMobile && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black dark:from-white dark:to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    style={{ backgroundSize: '200% 200%' }}
+                  ></motion.div>
+                )}
               </motion.button>
             </Link>
             
@@ -251,7 +267,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-transparent text-black border-black hover:bg-black hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black border-2 font-bold rounded-xl transition-all duration-300 w-full sm:w-auto"
+                className="px-10 py-4 bg-transparent text-black border-black hover:bg-black hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black border-2 font-bold rounded-xl transition-all duration-300 w-full sm:w-auto transform-gpu"
               >
                 Hire Me
               </motion.button>
