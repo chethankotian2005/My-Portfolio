@@ -29,74 +29,53 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'top-4 px-4' 
-          : 'top-0 px-0'
+          ? 'bg-white/80 dark:bg-deep-black/80 backdrop-blur-custom border-b border-black/10 dark:border-white/10 shadow-lg' 
+          : 'bg-transparent border-b border-transparent'
       }`}
+      style={{ height: '72px' }}
     >
-      <div 
-        className={`max-w-7xl mx-auto transition-all duration-500 ${
-          scrolled 
-            ? 'bg-white/70 dark:bg-secondary-black/70 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-border-gray/50 shadow-xl' 
-            : 'bg-white/80 dark:bg-deep-black/80 backdrop-blur-md border-b border-gray-200/50 dark:border-border-gray/50'
-        }`}
-        style={{ 
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-        }}
-      >
-        <div className="px-4 sm:px-6 lg:px-8 h-16 md:h-18">
-          <div className="flex justify-between items-center h-full">
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex justify-between items-center h-full">
           <Link href="/">
             <motion.div
-              whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.05 }}
               className="relative group cursor-pointer"
             >
-              <span className="text-2xl md:text-3xl font-extrabold bg-gradient-primary bg-clip-text text-transparent">CVK</span>
+              <span className="text-3xl font-extrabold gradient-text">CVK</span>
               <motion.div
-                className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 rounded-lg"
+                className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 rounded-lg"
                 aria-hidden="true"
               />
             </motion.div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link key={link.name} href={link.href} className="relative group px-5 py-2">
-                  <span className={`relative z-10 text-sm font-semibold transition-colors duration-300 ${
+                <Link key={link.name} href={link.href} className="relative group px-4 py-2">
+                  <span className={`relative z-10 text-sm font-medium transition-colors duration-300 ${
                     isActive 
-                      ? 'text-primary-indigo dark:text-primary-indigo-light' 
-                      : 'text-gray-700 dark:text-gray-300 group-hover:text-primary-indigo dark:group-hover:text-primary-indigo-light'
+                      ? 'text-black dark:text-white' 
+                      : 'text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white'
                   }`}>
                     {link.name}
                   </span>
                   
-                  {/* Active Background with Gradient */}
+                  {/* Active Background */}
                   {isActive && (
                     <motion.div
                       layoutId="navbar-active"
-                      className="absolute inset-0 bg-gradient-primary opacity-10 rounded-xl"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
+                      className="absolute inset-0 bg-black/5 dark:bg-white/10 rounded-full border border-black/5 dark:border-white/5"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
 
-                  {/* Hover Background */}
+                  {/* Hover Background (only if not active) */}
                   {!isActive && (
-                    <div className="absolute inset-0 bg-gray-100 dark:bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 scale-95 group-hover:scale-100" />
-                  )}
-                  
-                  {/* Bottom indicator line for active */}
-                  {isActive && (
-                    <motion.div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-primary rounded-full"
-                      layoutId="navbar-underline"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
-                    />
+                    <div className="absolute inset-0 bg-black/5 dark:bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100" />
                   )}
                 </Link>
               );
@@ -104,10 +83,10 @@ export default function Navbar() {
             
             {mounted && (
               <motion.button
-                whileHover={{ scale: 1.08, rotate: 180 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="ml-2 p-2.5 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-border-gray hover:border-primary-indigo dark:hover:border-primary-indigo transition-all duration-300 shadow-md hover:shadow-lg"
+                className="p-2.5 rounded-lg bg-white dark:bg-card-black border border-zinc-200 dark:border-border-gray hover:border-black dark:hover:border-primary-indigo transition-all duration-300"
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
@@ -200,7 +179,6 @@ export default function Navbar() {
             </motion.button>
           </div>
         </div>
-      </div>
       </div>
 
       <AnimatePresence>
