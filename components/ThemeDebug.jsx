@@ -14,7 +14,7 @@ export default function ThemeDebug() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 bg-card-black border border-border-gray p-4 rounded-lg text-xs z-50 opacity-50 hover:opacity-100 transition-opacity">
+    <div className="fixed bottom-4 right-4 bg-white dark:bg-card-black border border-gray-200 dark:border-border-gray p-4 rounded-lg text-xs z-50 opacity-50 hover:opacity-100 transition-opacity shadow-lg">
       <div className="font-mono space-y-1">
         <div>Theme: <span className="text-primary-indigo">{theme}</span></div>
         <div>System: <span className="text-secondary-purple">{systemTheme}</span></div>

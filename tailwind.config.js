@@ -10,20 +10,20 @@ module.exports = {
     extend: {
       colors: {
         // Deep Black Theme Colors
-        'deep-black': '#0a0a0a',
-        'secondary-black': '#111111',
-        'card-black': '#1a1a1a',
-        'border-gray': '#2a2a2a',
+        'deep-black': '#050505',
+        'secondary-black': '#0a0a0a',
+        'card-black': '#121212',
+        'border-gray': '#262626',
         
-        // Accent Colors
-        'primary-indigo': '#6366f1',
-        'secondary-purple': '#8b5cf6',
-        'success-emerald': '#10b981',
+        // Accent Colors - Monochrome
+        'primary-indigo': 'rgb(var(--primary-indigo) / <alpha-value>)',
+        'secondary-purple': 'rgb(var(--secondary-purple) / <alpha-value>)',
+        'success-emerald': 'rgb(var(--success-emerald) / <alpha-value>)',
         
         // Text Colors
-        'text-primary': '#ffffff',
-        'text-secondary': '#e5e7eb',
-        'text-muted': '#9ca3af',
+        'text-primary': 'rgb(var(--foreground-rgb) / <alpha-value>)',
+        'text-secondary': 'rgb(var(--text-secondary) / <alpha-value>)',
+        'text-muted': 'rgb(var(--text-muted) / <alpha-value>)',
         
         // Keep existing primary for backward compatibility
         primary: {
@@ -57,10 +57,10 @@ module.exports = {
         'container': '1280px',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(99, 102, 241, 0.3)',
-        'glow-lg': '0 0 40px rgba(99, 102, 241, 0.4)',
+        'glow': '0 0 20px rgba(255, 255, 255, 0.15)',
+        'glow-lg': '0 0 40px rgba(255, 255, 255, 0.25)',
         'card': '0 8px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 12px 32px rgba(99, 102, 241, 0.3)',
+        'card-hover': '0 12px 32px rgba(255, 255, 255, 0.1)',
       },
       backdropBlur: {
         'xs': '2px',
@@ -98,8 +98,8 @@ module.exports = {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.4)' },
-          '50%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(255, 255, 255, 0.2)' },
+          '50%': { boxShadow: '0 0 40px rgba(255, 255, 255, 0.4)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
@@ -115,9 +115,9 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 70%)',
-        'gradient-primary': 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-        'gradient-success': 'linear-gradient(135deg, #10b981, #059669)',
+        'gradient-radial': 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 70%)',
+        'gradient-primary': 'linear-gradient(135deg, #ffffff, #a3a3a3)',
+        'gradient-success': 'linear-gradient(135deg, #525252, #262626)',
       },
     },
   },

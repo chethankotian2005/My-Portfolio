@@ -53,11 +53,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-deep-black border-t border-border-gray overflow-hidden">
+    <footer className="relative bg-white dark:bg-deep-black border-t border-gray-200 dark:border-border-gray overflow-hidden">
       {/* Gradient Background Effects */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-indigo/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-purple/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-black/5 dark:bg-primary-indigo/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-black/5 dark:bg-secondary-purple/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,11 +75,11 @@ export default function Footer() {
                 CVK
               </div>
               <div>
-                <h3 className="text-text-primary font-bold text-lg">Chethan V Kotian</h3>
-                <p className="text-text-muted text-sm">Full Stack Developer</p>
+                <h3 className="text-black dark:text-text-primary font-bold text-lg">Chethan V Kotian</h3>
+                <p className="text-gray-600 dark:text-text-muted text-sm">Full Stack Developer</p>
               </div>
             </div>
-            <p className="text-text-secondary text-sm max-w-xs italic">
+            <p className="text-gray-700 dark:text-text-secondary text-sm max-w-xs italic">
               "Building the future, one line of code at a time"
             </p>
           </motion.div>
@@ -92,8 +92,8 @@ export default function Footer() {
             transition={{ delay: 0.1 }}
             className="space-y-4"
           >
-            <h4 className="text-text-primary font-semibold text-lg flex items-center">
-              <svg className="w-5 h-5 mr-2 text-primary-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h4 className="text-black dark:text-text-primary font-semibold text-lg flex items-center">
+              <svg className="w-5 h-5 mr-2 text-black dark:text-primary-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               Quick Links
@@ -103,9 +103,9 @@ export default function Footer() {
                 <motion.div key={link.name} whileHover={{ x: 4 }}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-primary-indigo transition-colors duration-300 text-sm flex items-center group"
+                    className="text-gray-600 dark:text-text-secondary hover:text-black dark:hover:text-primary-indigo transition-colors duration-300 text-sm flex items-center group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-indigo mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-primary-indigo mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
                   </Link>
                 </motion.div>
@@ -121,8 +121,8 @@ export default function Footer() {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <h4 className="text-text-primary font-semibold text-lg flex items-center">
-              <svg className="w-5 h-5 mr-2 text-secondary-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <h4 className="text-black dark:text-text-primary font-semibold text-lg flex items-center">
+              <svg className="w-5 h-5 mr-2 text-gray-600 dark:text-secondary-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
               </svg>
               Let's Connect
@@ -143,39 +143,39 @@ export default function Footer() {
                     y: -4,
                     rotate: [0, -10, 10, 0]
                   }}
-                  className="w-12 h-12 rounded-lg bg-card-black border border-border-gray hover:border-primary-indigo flex items-center justify-center text-text-secondary hover:text-primary-indigo transition-all duration-300 hover:shadow-glow group"
+                  className="w-12 h-12 rounded-lg bg-white dark:bg-card-black border border-gray-200 dark:border-border-gray hover:border-black dark:hover:border-primary-indigo flex items-center justify-center text-gray-600 dark:text-text-secondary hover:text-black dark:hover:text-primary-indigo transition-all duration-300 hover:shadow-glow group"
                   aria-label={social.name}
                 >
                   {social.icon}
                 </motion.a>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">
+            <p className="text-gray-500 dark:text-text-muted text-xs mt-4">
               Available for freelance opportunities and collaborations
             </p>
           </motion.div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border-gray py-6">
+        <div className="border-t border-gray-200 dark:border-border-gray py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-text-muted text-sm text-center md:text-left"
+              className="text-gray-500 dark:text-text-muted text-sm text-center md:text-left"
             >
               © {currentYear} Chethan V Kotian — Built with{' '}
-              <span className="text-primary-indigo font-semibold">Next.js</span>,{' '}
-              <span className="text-secondary-purple font-semibold">Tailwind CSS</span> &{' '}
-              <span className="text-success-emerald font-semibold">Firebase</span>
+              <span className="text-black dark:text-primary-indigo font-semibold">Next.js</span>,{' '}
+              <span className="text-gray-600 dark:text-secondary-purple font-semibold">Tailwind CSS</span> &{' '}
+              <span className="text-emerald-600 dark:text-success-emerald font-semibold">Firebase</span>
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex items-center space-x-2 text-text-muted text-xs"
+              className="flex items-center space-x-2 text-gray-500 dark:text-text-muted text-xs"
             >
               <span>Made with</span>
               <motion.span

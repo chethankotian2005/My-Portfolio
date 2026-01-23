@@ -44,40 +44,40 @@ export default function AboutSection() {
         className="card-dark p-8 sm:p-10 lg:p-12 card-hover"
       >
         <div className="space-y-6">
-          <p className="text-text-secondary text-lg leading-relaxed">
+          <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
             I'm currently pursuing my Bachelor of Engineering in{' '}
-            <span className="text-primary-indigo font-semibold hover:text-secondary-purple transition-colors cursor-pointer">
+            <span className="text-black dark:text-primary-indigo font-semibold hover:text-gray-600 dark:hover:text-secondary-purple transition-colors cursor-pointer">
               Artificial Intelligence & Machine Learning
             </span>{' '}
             from Shri Madhwa Vadiraja Institute of Technology and Management (SMVITM). My journey in tech has been driven by a passion for 
             creating innovative solutions that solve real-world problems.
           </p>
           
-          <p className="text-text-secondary text-lg leading-relaxed">
+          <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
             As a developer, I specialize in{' '}
             <span className="relative inline-block group">
-              <span className="text-primary-indigo font-semibold">AI/ML applications</span>
+              <span className="text-black dark:text-primary-indigo font-semibold">AI/ML applications</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </span>
             ,{' '}
             <span className="relative inline-block group">
-              <span className="text-primary-indigo font-semibold">mobile development</span>
+              <span className="text-black dark:text-primary-indigo font-semibold">mobile development</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </span>
             , and{' '}
             <span className="relative inline-block group">
-              <span className="text-primary-indigo font-semibold">web technologies</span>
+              <span className="text-black dark:text-primary-indigo font-semibold">web technologies</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </span>
             . I thrive in hackathon environments where creativity meets technical expertise, and I've participated in multiple competitive coding events and tech competitions.
           </p>
 
-          <p className="text-text-secondary text-lg leading-relaxed">
+          <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
             Beyond coding, I'm passionate about building products that make a{' '}
-            <span className="text-success-emerald font-semibold">meaningful impact</span>. Whether it's developing emergency 
+            <span className="text-emerald-600 dark:text-success-emerald font-semibold">meaningful impact</span>. Whether it's developing emergency 
             medical apps, creating AI-powered mental health solutions, or exploring cutting-edge technologies like{' '}
-            <span className="text-secondary-purple font-semibold">computer vision</span> and{' '}
-            <span className="text-secondary-purple font-semibold">NLP</span>, I'm always eager to learn and push the boundaries of what's possible.
+            <span className="text-gray-600 dark:text-secondary-purple font-semibold">computer vision</span> and{' '}
+            <span className="text-gray-600 dark:text-secondary-purple font-semibold">NLP</span>, I'm always eager to learn and push the boundaries of what's possible.
           </p>
         </div>
 
@@ -90,9 +90,9 @@ export default function AboutSection() {
             rel="noopener noreferrer"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(100, 100, 100, 0.4)' }}
               whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-primary text-white font-bold rounded-xl shadow-glow overflow-hidden"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-glow overflow-hidden"
             >
               <motion.svg
                 className="w-5 h-5"
@@ -123,7 +123,22 @@ export default function AboutSection() {
           <h3 className="text-3xl font-bold gradient-text">Experience & Achievements</h3>
         </div>
         
-        <div className="space-y-8">
+        <motion.div 
+          className="space-y-8"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3,
+                when: "beforeChildren"
+              }
+            }
+          }}
+        >
           {[
             {
               icon: (
@@ -224,31 +239,52 @@ export default function AboutSection() {
           ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ delay: index * 0.1 + 0.3 }}
+              variants={{
+                hidden: { opacity: 0, x: -50, y: 20 },
+                visible: { 
+                  opacity: 1, 
+                  x: 0, 
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 12 }
+                }
+              }}
               className="relative pl-12 group"
             >
               {/* Connecting Line */}
               {index < 7 && (
-                <div className="absolute left-5 top-12 w-0.5 h-full bg-border-gray group-hover:bg-primary-indigo transition-colors duration-300"></div>
+                <motion.div 
+                  initial={{ height: 0, opacity: 0 }}
+                  whileInView={{ height: '100%', opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                  className="absolute left-5 top-12 w-0.5 bg-border-gray group-hover:bg-primary-indigo transition-colors duration-300"
+                />
               )}
               
               {/* Icon Circle */}
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className={`absolute left-0 top-0 w-10 h-10 rounded-full bg-${item.color} flex items-center justify-center text-white shadow-glow`}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                className={`absolute left-0 top-0 w-10 h-10 rounded-full bg-${item.color} flex items-center justify-center text-white shadow-glow z-10`}
               >
                 {item.icon}
               </motion.div>
               
               {/* Content */}
-              <div className="pb-8">
+              <motion.div 
+                className="pb-8 p-4 -ml-4 rounded-xl border border-transparent"
+                whileHover={{ 
+                  x: 10, 
+                  backgroundColor: "rgba(255, 255, 255, 0.03)",
+                  borderColor: "rgba(255, 255, 255, 0.05)"
+                }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex flex-wrap items-center gap-3 mb-2">
                   <h4 className="text-xl font-bold text-text-primary group-hover:text-primary-indigo transition-colors">
                     {item.title}
                   </h4>
-                  <span className="px-3 py-1 text-sm font-medium bg-card-black border border-border-gray rounded-full text-text-muted">
+                  <span className="px-3 py-1 text-sm font-medium bg-gray-100 dark:bg-card-black border border-gray-200 dark:border-border-gray rounded-full text-gray-600 dark:text-text-muted">
                     {item.date}
                   </span>
                 </div>
@@ -256,10 +292,10 @@ export default function AboutSection() {
                   <p className="text-primary-indigo font-semibold mb-2">{item.company}</p>
                 )}
                 <p className="text-text-secondary leading-relaxed">{item.description}</p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );

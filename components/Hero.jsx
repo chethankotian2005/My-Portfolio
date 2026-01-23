@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useMemo } from 'react';
 
@@ -61,11 +62,11 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-72px)] md:min-h-screen flex items-center justify-center overflow-hidden bg-deep-black px-4 py-12 md:py-20">
+    <section className="relative min-h-[calc(100vh-72px)] md:min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-deep-black px-4 py-12 md:py-20">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Radial gradient spotlight */}
-        <div className="absolute inset-0 bg-gradient-radial"></div>
+        <div className="absolute inset-0 bg-gradient-radial opacity-20 dark:opacity-100"></div>
         
         {/* Floating geometric shapes */}
         <motion.div
@@ -78,7 +79,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-primary-indigo/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
         ></motion.div>
         
         <motion.div
@@ -92,7 +93,7 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-secondary-purple/10 rounded-full blur-3xl"
+          className="absolute top-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
         ></motion.div>
         
         <motion.div
@@ -106,11 +107,11 @@ export default function Hero() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-primary-indigo/8 rounded-full blur-3xl"
+          className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-black/5 dark:bg-white/5 rounded-full blur-3xl"
         ></motion.div>
 
         {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
       </div>
 
       {/* Content */}
@@ -137,16 +138,23 @@ export default function Hero() {
               }}
               className="relative inline-block"
             >
-              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-primary flex items-center justify-center text-white text-3xl sm:text-4xl md:text-5xl font-extrabold shadow-glow-lg relative overflow-hidden group cursor-pointer">
-                <span className="relative z-10">CV</span>
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow-lg relative overflow-hidden group cursor-pointer">
+                <Image
+                  src="/profile.png"
+                  alt="Chethan V Kotian"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover rounded-full"
+                  priority
+                />
                 {/* Animated border glow */}
                 <motion.div
                   className="absolute inset-0 rounded-full"
                   animate={{
                     boxShadow: [
-                      '0 0 20px rgba(99, 102, 241, 0.4)',
-                      '0 0 40px rgba(99, 102, 241, 0.8)',
-                      '0 0 20px rgba(99, 102, 241, 0.4)',
+                      '0 0 20px rgba(255, 255, 255, 0.4)',
+                      '0 0 40px rgba(255, 255, 255, 0.8)',
+                      '0 0 20px rgba(255, 255, 255, 0.4)',
                     ],
                   }}
                   transition={{
@@ -162,7 +170,7 @@ export default function Hero() {
           {/* Greeting */}
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-text-muted mb-4 font-medium"
+            className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-4 font-medium"
           >
             Hi, I'm
           </motion.p>
@@ -185,7 +193,7 @@ export default function Hero() {
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                className="inline-block w-0.5 h-8 sm:h-10 bg-primary-indigo ml-1"
+                className="inline-block w-0.5 h-8 sm:h-10 bg-black dark:bg-white ml-1"
               ></motion.span>
             </h2>
           </motion.div>
@@ -193,10 +201,10 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            I'm a <span className="text-primary-indigo font-semibold">passionate developer</span> who builds innovative projects in{' '}
-            <span className="text-secondary-purple font-semibold">AI, mobile, and web</span> —
+            I'm a <span className="text-black dark:text-white font-semibold">passionate developer</span> who builds innovative projects in{' '}
+            <span className="text-black dark:text-white font-semibold">AI, mobile, and web</span> —
             turning ideas into impactful solutions that make a difference.
           </motion.p>
 
@@ -207,9 +215,9 @@ export default function Hero() {
           >
             <Link href="/projects">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' }}
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(100, 100, 100, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-4 bg-gradient-primary text-white font-bold rounded-xl shadow-glow overflow-hidden w-full sm:w-auto"
+                className="group relative px-10 py-4 bg-black text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-glow overflow-hidden w-full sm:w-auto"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View Projects
@@ -225,7 +233,7 @@ export default function Hero() {
                   </motion.svg>
                 </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-indigo to-secondary-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black dark:from-white dark:to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
@@ -243,7 +251,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-transparent text-primary-indigo font-bold rounded-xl border-2 border-primary-indigo hover:bg-primary-indigo hover:text-white transition-all duration-300 w-full sm:w-auto"
+                className="px-10 py-4 bg-transparent text-black border-black hover:bg-black hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black border-2 font-bold rounded-xl transition-all duration-300 w-full sm:w-auto"
               >
                 Hire Me
               </motion.button>
@@ -257,15 +265,15 @@ export default function Hero() {
           >
             <div>
               <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">10+</div>
-              <div className="text-sm text-text-muted">Projects Built</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Projects Built</div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">5+</div>
-              <div className="text-sm text-text-muted">Hackathons</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Hackathons</div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">3+</div>
-              <div className="text-sm text-text-muted">Technologies</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
             </div>
           </motion.div>
 
@@ -282,7 +290,7 @@ export default function Hero() {
             className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block"
           >
             <motion.svg
-              className="w-6 h-6 text-text-muted"
+              className="w-6 h-6 text-gray-600 dark:text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -305,7 +313,7 @@ export default function Hero() {
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute w-1 h-1 bg-primary-indigo/30 rounded-full"
+              className="absolute w-1 h-1 bg-black/30 dark:bg-white/30 rounded-full"
               style={{
                 left: `${particle.left}%`,
                 top: `${particle.top}%`,

@@ -13,20 +13,25 @@ export default function ProjectCard({ project, index }) {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        delay: index * 0.15,
+        duration: 0.5, // Slightly faster duration
+        delay: index * 0.1, // Reduced delay between cards
         ease: 'easeOut',
       },
     },
   };
 
+  // Determine if this is one of the first few cards that should load immediately
+  const isPriority = index < 2;
+
   return (
     <motion.div
       variants={cardVariants}
       initial="hidden"
-      whileInView="visible"
+      // Animate immediately if priority, otherwise wait for scroll
+      animate={isPriority ? "visible" : undefined}
+      whileInView={!isPriority ? "visible" : undefined}
       viewport={{ once: true, margin: '-50px' }}
-      className="group card-dark border border-border-gray hover:border-primary-indigo rounded-xl overflow-hidden transition-all duration-300"
+      className="group card-dark border border-gray-200 dark:border-border-gray hover:border-black dark:hover:border-primary-indigo rounded-xl overflow-hidden transition-all duration-300"
     >
       <motion.div
         whileHover={{ y: -12 }}
@@ -43,11 +48,11 @@ export default function ProjectCard({ project, index }) {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-card-black via-card-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 dark:from-card-black dark:via-card-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
             </>
           ) : (
-            <div className="relative h-full bg-secondary-black flex items-center justify-center overflow-hidden">
-              <div className="relative text-text-primary z-10">
+            <div className="relative h-full bg-gray-100 dark:bg-secondary-black flex items-center justify-center overflow-hidden">
+              <div className="relative text-black dark:text-text-primary z-10">
                 {project.icon || (
                   <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -62,7 +67,7 @@ export default function ProjectCard({ project, index }) {
         <div className="p-6 space-y-4">
           {/* Title with Gradient on Hover */}
           <motion.h3 
-            className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300"
+            className="text-2xl font-bold text-black dark:text-text-primary group-hover:gradient-text transition-all duration-300"
           >
             {project.title}
           </motion.h3>
@@ -75,7 +80,7 @@ export default function ProjectCard({ project, index }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className={`text-text-secondary text-sm leading-relaxed break-words ${!isExpanded ? 'line-clamp-4' : ''}`}
+                className={`text-gray-600 dark:text-text-secondary text-sm leading-relaxed break-words ${!isExpanded ? 'line-clamp-4' : ''}`}
               >
                 {project.description}
               </motion.p>
@@ -84,7 +89,7 @@ export default function ProjectCard({ project, index }) {
             {project.description.length > 150 && (
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="text-primary-indigo hover:text-secondary-purple text-xs font-medium mt-2 transition-colors duration-200 flex items-center gap-1"
+                className="text-black dark:text-primary-indigo hover:text-gray-600 dark:hover:text-secondary-purple text-xs font-medium mt-2 transition-colors duration-200 flex items-center gap-1"
               >
                 {isExpanded ? (
                   <>
@@ -115,7 +120,7 @@ export default function ProjectCard({ project, index }) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 + idx * 0.05 }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="px-3 py-1.5 text-xs font-medium bg-secondary-black border border-border-gray text-primary-indigo rounded-lg hover:border-primary-indigo hover:shadow-glow transition-all duration-300 cursor-default"
+                className="px-3 py-1.5 text-xs font-medium bg-white dark:bg-secondary-black border border-gray-200 dark:border-border-gray text-primary-indigo rounded-lg hover:border-primary-indigo hover:shadow-glow transition-all duration-300 cursor-default"
               >
                 {tech}
               </motion.span>
@@ -134,7 +139,7 @@ export default function ProjectCard({ project, index }) {
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="w-full px-4 py-2.5 bg-secondary-black border border-border-gray text-text-primary rounded-lg hover:border-primary-indigo hover:shadow-glow transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  className="w-full px-4 py-2.5 bg-white dark:bg-secondary-black border border-gray-200 dark:border-border-gray text-text-primary rounded-lg hover:border-primary-indigo hover:shadow-glow transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                 >
                   <motion.svg 
                     className="w-5 h-5"

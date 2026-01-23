@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import AboutSection from '@/components/AboutSection';
 import SkillsGrid from '@/components/SkillsGrid';
+import StatsSection from '@/components/StatsSection';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 
 export default function About() {
   return (
@@ -23,8 +25,11 @@ export default function About() {
           </p>
         </motion.div>
 
+        {/* Stats Section */}
+        <StatsSection />
+
         {/* About Content */}
-        <div className="mb-20">
+        <div className="my-20">
           <AboutSection />
         </div>
 
@@ -39,6 +44,11 @@ export default function About() {
           </h2>
           <SkillsGrid />
         </motion.div>
+
+        {/* Testimonials Section */}
+        <div className="mt-20">
+          <TestimonialsCarousel />
+        </div>
       </div>
     </div>
   );

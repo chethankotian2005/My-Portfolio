@@ -61,7 +61,7 @@ export default function Projects() {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             My Projects
           </motion.h1>
@@ -69,7 +69,7 @@ export default function Projects() {
             className="text-lg sm:text-xl text-text-secondary max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             Explore my portfolio of innovative AI solutions, machine learning systems, and full-stack applications
           </motion.p>

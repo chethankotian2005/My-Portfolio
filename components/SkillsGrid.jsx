@@ -162,7 +162,7 @@ export default function SkillsGrid() {
             <h3 className="text-3xl font-bold gradient-text">
               {category}
             </h3>
-            <div className="h-1 flex-1 bg-gradient-to-r from-primary-indigo/50 to-transparent rounded-full"></div>
+            <div className="h-1 flex-1 bg-gradient-to-r from-black/50 dark:from-primary-indigo/50 to-transparent rounded-full"></div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {skillList.map((skill, index) => (
@@ -199,20 +199,20 @@ export default function SkillsGrid() {
                 {/* Content */}
                 <div className="flex flex-col items-center text-center space-y-3 relative z-10">
                   <motion.div
-                    className="text-primary-indigo group-hover:text-secondary-purple transition-colors duration-300"
+                    className="text-black dark:text-primary-indigo group-hover:text-gray-600 dark:group-hover:text-secondary-purple transition-colors duration-300"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
                     {skill.icon}
                   </motion.div>
-                  <span className="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors duration-300">
+                  <span className="text-sm font-semibold text-gray-600 dark:text-text-secondary group-hover:text-black dark:group-hover:text-text-primary transition-colors duration-300">
                     {skill.name}
                   </span>
                 </div>
                 
                 {/* Border glow effect */}
                 <motion.div
-                  className="absolute inset-0 border-2 border-transparent group-hover:border-primary-indigo rounded-2xl transition-all duration-300"
+                  className="absolute inset-0 border-2 border-transparent group-hover:border-black dark:group-hover:border-primary-indigo rounded-2xl transition-all duration-300"
                   initial={false}
                 />
               </motion.div>

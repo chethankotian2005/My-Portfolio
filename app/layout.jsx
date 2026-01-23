@@ -4,6 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
 import ThemeScript from '@/components/ThemeScript';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
+import CustomCursor from '@/components/CustomCursor';
+import FloatingContact from '@/components/FloatingContact';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,6 +48,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Providers>
           <ThemeScript />
+          <ScrollProgress />
+          <CustomCursor />
+          <ScrollToTop />
+          <FloatingContact />
           <div className="flex flex-col min-h-screen bg-deep-black">
             <Navbar />
             <main className="flex-grow">

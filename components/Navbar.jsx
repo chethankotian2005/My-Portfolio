@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-deep-black/80 backdrop-blur-custom border-b border-white/10 shadow-lg' 
+          ? 'bg-white/80 dark:bg-deep-black/80 backdrop-blur-custom border-b border-black/10 dark:border-white/10 shadow-lg' 
           : 'bg-transparent border-b border-transparent'
       }`}
       style={{ height: '72px' }}
@@ -51,26 +51,32 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link key={link.name} href={link.href} className="relative group">
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    className={`text-base font-medium transition-colors duration-200 ${
-                      isActive ? 'text-primary-indigo' : 'text-text-secondary hover:text-primary-indigo'
-                    }`}
-                  >
+                <Link key={link.name} href={link.href} className="relative group px-4 py-2">
+                  <span className={`relative z-10 text-sm font-medium transition-colors duration-300 ${
+                    isActive 
+                      ? 'text-black dark:text-white' 
+                      : 'text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white'
+                  }`}>
                     {link.name}
-                  </motion.span>
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-primary"
-                    initial={false}
-                    animate={{ scaleX: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
-                    whileHover={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
+                  </span>
+                  
+                  {/* Active Background */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-active"
+                      className="absolute inset-0 bg-black/5 dark:bg-white/10 rounded-full border border-black/5 dark:border-white/5"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+
+                  {/* Hover Background (only if not active) */}
+                  {!isActive && (
+                    <div className="absolute inset-0 bg-black/5 dark:bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100" />
+                  )}
                 </Link>
               );
             })}
@@ -80,7 +86,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2.5 rounded-lg bg-card-black border border-border-gray hover:border-primary-indigo transition-all duration-300"
+                className="p-2.5 rounded-lg bg-white dark:bg-card-black border border-zinc-200 dark:border-border-gray hover:border-black dark:hover:border-primary-indigo transition-all duration-300"
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
@@ -121,7 +127,7 @@ export default function Navbar() {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg bg-card-black border border-border-gray"
+                className="p-2 rounded-lg bg-white dark:bg-card-black border border-gray-200 dark:border-border-gray"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
@@ -138,7 +144,7 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-card-black border border-border-gray"
+              className="p-2 rounded-lg bg-white dark:bg-card-black border border-gray-200 dark:border-border-gray"
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
@@ -182,7 +188,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-secondary-black/95 backdrop-blur-custom border-t border-white/10"
+            className="md:hidden bg-white/95 dark:bg-secondary-black/95 backdrop-blur-custom border-t border-black/10 dark:border-white/10"
           >
             <div className="px-4 py-6 space-y-3">
               {navLinks.map((link, index) => {
@@ -198,7 +204,7 @@ export default function Navbar() {
                       href={link.href}
                       onClick={() => setIsOpen(false)}
                       className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
-                        isActive ? 'bg-gradient-primary text-white' : 'text-text-secondary hover:bg-card-black hover:text-primary-indigo'
+                        isActive ? 'bg-gradient-primary text-white' : 'text-text-secondary hover:bg-gray-100 dark:hover:bg-card-black hover:text-primary-indigo'
                       }`}
                     >
                       {link.name}
