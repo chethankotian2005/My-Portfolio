@@ -33,10 +33,6 @@ body {
   font-family: 'Inter', 'SF Pro Display', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Hardware acceleration */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: auto;
 }
 
 /* Gradient animation keyframes */
@@ -125,6 +121,15 @@ html {
   /* Better scrolling on mobile */
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
+  /* Ensure scrolling works on mobile */
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
 /* Hide default cursor on desktop - more selective approach */
@@ -365,16 +370,20 @@ button:active, a:active, [role="button"]:active {
 }
 
 /* Improve mobile scrolling - optimized */
-body {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-  /* Better scroll performance */
-  scroll-behavior: smooth;
-  /* Prevent horizontal overflow */
-  overflow-x: hidden;
-  /* GPU acceleration */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+/* Mobile scrolling styles already defined above */
+
+/* Additional mobile scroll optimization */
+@media (max-width: 1024px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  
+  body {
+    position: relative;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
 }
 
 /* Prevent text size adjustment on mobile */
