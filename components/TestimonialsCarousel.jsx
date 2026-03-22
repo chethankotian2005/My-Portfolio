@@ -25,24 +25,24 @@ const testimonials = [
 
 export default function TestimonialsCarousel() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-secondary-black/50">
+    <section className="py-14 sm:py-20 bg-gray-50 dark:bg-secondary-black/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">
             What People Say
           </h2>
-          <p className="text-text-secondary text-lg">
+          <p className="text-text-secondary text-base sm:text-lg">
             Feedback from mentors and collaborators
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -51,7 +51,7 @@ export default function TestimonialsCarousel() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white dark:bg-card-black rounded-2xl p-6 border border-gray-200 dark:border-border-primary hover:border-primary-indigo/50 transition-all duration-300 relative shadow-sm dark:shadow-none"
+              className="bg-white dark:bg-card-black rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-border-primary hover:border-primary-indigo/50 transition-all duration-300 relative shadow-sm dark:shadow-none"
             >
               {/* Quote icon */}
               <div className="absolute -top-4 left-6 bg-gradient-primary rounded-full p-3">
@@ -61,7 +61,7 @@ export default function TestimonialsCarousel() {
               </div>
 
               <div className="mt-8">
-                <p className="text-text-secondary mb-6 italic">
+                <p className="text-text-secondary text-sm sm:text-base mb-6 italic">
                   "{testimonial.text}"
                 </p>
                 

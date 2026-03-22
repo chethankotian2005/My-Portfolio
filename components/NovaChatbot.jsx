@@ -108,7 +108,7 @@ export default function NovaChatbot() {
   }, [isOpen]);
 
   return (
-    <div ref={chatRootRef} className="fixed bottom-[10.5rem] right-8 md:bottom-[11rem] md:right-8 z-[70]">
+    <div ref={chatRootRef} className="fixed bottom-[9.75rem] right-3 sm:right-6 md:bottom-[11rem] md:right-8 z-[70]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -116,7 +116,7 @@ export default function NovaChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="mb-4 w-[92vw] max-w-md max-h-[calc(100vh-16rem)] md:max-h-[calc(100vh-17rem)] rounded-3xl border border-gray-200 dark:border-border-gray bg-white/95 dark:bg-card-black/95 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col"
+            className="mb-4 w-[calc(100vw-1.5rem)] sm:w-[92vw] max-w-md max-h-[calc(100vh-13rem)] sm:max-h-[calc(100vh-16rem)] md:max-h-[calc(100vh-17rem)] rounded-3xl border border-gray-200 dark:border-border-gray bg-white/95 dark:bg-card-black/95 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col"
           >
             <div className="px-4 py-3 border-b border-gray-200 dark:border-border-gray bg-gradient-to-r from-gray-50 to-white dark:from-secondary-black dark:to-card-black flex items-center justify-between">
               <div className="flex items-center gap-2.5">
@@ -216,7 +216,7 @@ export default function NovaChatbot() {
           <motion.div
             initial={{ opacity: 0, x: 12 }}
             animate={{ opacity: 1, x: 0 }}
-            className="mr-3 hidden sm:block rounded-full bg-white dark:bg-secondary-black border border-gray-200 dark:border-border-gray px-3 py-1.5 text-xs text-gray-700 dark:text-text-secondary shadow-md"
+            className="mr-2 sm:mr-3 hidden sm:block rounded-full bg-white dark:bg-secondary-black border border-gray-200 dark:border-border-gray px-3 py-1.5 text-xs text-gray-700 dark:text-text-secondary shadow-md"
           >
             Ask Nova
           </motion.div>

@@ -9,7 +9,7 @@ export default function FloatingContact() {
 
   return (
     <motion.div
-      className="fixed bottom-24 right-8 z-40"
+      className="fixed bottom-20 right-4 sm:bottom-24 sm:right-8 z-40"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1, duration: 0.5 }}

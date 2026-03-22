@@ -47,24 +47,24 @@ const skillCategories = [
 
 export default function SkillsVisualization() {
   return (
-    <section className="py-20 bg-white dark:bg-deep-black">
+    <section className="py-14 sm:py-20 bg-white dark:bg-deep-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">
             Technical Expertise
           </h2>
-          <p className="text-text-secondary text-lg">
+          <p className="text-text-secondary text-base sm:text-lg">
             Mastery across multiple domains
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -72,9 +72,9 @@ export default function SkillsVisualization() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
-              className="bg-gray-50 dark:bg-secondary-black rounded-2xl p-6 border border-gray-200 dark:border-gray hover:border-primary-indigo/50 transition-all duration-300"
+              className="bg-gray-50 dark:bg-secondary-black rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray hover:border-primary-indigo/50 transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold text-text-primary mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-5 sm:mb-6">
                 {category.title}
               </h3>
               

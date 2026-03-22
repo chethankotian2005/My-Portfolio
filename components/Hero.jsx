@@ -126,7 +126,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -192,7 +192,7 @@ export default function Hero() {
           {/* Name with Gradient */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-8 gradient-text leading-tight"
+            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-6 sm:mb-8 gradient-text leading-tight"
           >
             Chethan V Kotian
           </motion.h1>
@@ -200,14 +200,14 @@ export default function Hero() {
           {/* Typing Effect Subtitle */}
           <motion.div
             variants={itemVariants}
-            className="mb-8 h-12 sm:h-16 flex items-center justify-center"
+            className="mb-8 min-h-[3.5rem] sm:min-h-[4rem] flex items-center justify-center"
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-text-secondary">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-text-secondary text-center max-w-3xl leading-snug">
               {typedText}
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                className="inline-block w-0.5 h-8 sm:h-10 bg-black dark:bg-white ml-1"
+                className="inline-block w-0.5 h-6 sm:h-10 bg-black dark:bg-white ml-1 align-middle"
               ></motion.span>
             </h2>
           </motion.div>
@@ -215,7 +215,7 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-xl text-gray-600 dark:text-gray-400 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-1"
           >
             I'm a <span className="text-black dark:text-white font-semibold">passionate developer</span> who builds innovative projects in{' '}
             <span className="text-black dark:text-white font-semibold">AI, mobile, and web</span> —
@@ -225,7 +225,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-14 sm:mb-16"
           >
             <Link href="/projects">
               <motion.button

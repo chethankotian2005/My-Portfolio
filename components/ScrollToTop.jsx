@@ -48,11 +48,11 @@ export default function ScrollToTop() {
           whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(100, 100, 100, 0.4)' }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 bg-black text-white dark:bg-white dark:text-black rounded-full shadow-glow transition-all duration-300 group transform-gpu"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-3 sm:p-4 bg-black text-white dark:bg-white dark:text-black rounded-full shadow-glow transition-all duration-300 group transform-gpu"
           aria-label="Scroll to top"
         >
           <motion.svg
-            className="w-6 h-6"
+            className="w-5 h-5 sm:w-6 sm:h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
