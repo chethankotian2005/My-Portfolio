@@ -7,6 +7,7 @@ import ThemeScript from '@/components/ThemeScript';
 import ScrollProgress from '@/components/ScrollProgress';
 import ScrollToTop from '@/components/ScrollToTop';
 import FloatingContact from '@/components/FloatingContact';
+import NovaChatbot from '@/components/NovaChatbot';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
           <ScrollProgress />
           <ScrollToTop />
           <FloatingContact />
+          <NovaChatbot />
           <div className="flex flex-col min-h-screen bg-white dark:bg-deep-black" style={{ position: 'relative' }}>
             <Navbar />
             <main className="flex-grow" style={{ overflow: 'visible', position: 'relative' }}>
