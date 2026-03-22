@@ -48,7 +48,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-deep-black">
+    <div className="min-h-screen pt-20 bg-white dark:bg-deep-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Page Header */}
         <motion.div
@@ -119,7 +119,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex flex-col items-center justify-center gap-3 p-6 rounded-xl bg-secondary-black border border-border-gray text-text-primary hover:border-primary-indigo hover:shadow-glow transition-all duration-300 ${social.color}`}
+                    className={`flex flex-col items-center justify-center gap-3 p-6 rounded-xl bg-white dark:bg-secondary-black border border-gray-200 dark:border-border-gray text-text-primary hover:border-primary-indigo hover:shadow-glow transition-all duration-300 ${social.color}`}
                   >
                     {social.icon}
                     <span className="text-sm font-medium">{social.name}</span>

@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
           <ScrollProgress />
           <ScrollToTop />
           <FloatingContact />
-          <div className="flex flex-col min-h-screen bg-deep-black" style={{ position: 'relative' }}>
+          <div className="flex flex-col min-h-screen bg-white dark:bg-deep-black" style={{ position: 'relative' }}>
             <Navbar />
             <main className="flex-grow" style={{ overflow: 'visible', position: 'relative' }}>
               {children}

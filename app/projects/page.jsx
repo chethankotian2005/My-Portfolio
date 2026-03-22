@@ -22,6 +22,14 @@ export default function Projects() {
       demo: null,
     },
     {
+      title: "Academic Setu",
+      description: "AI-based timetable generation system that uses constraint optimization to create practical schedules. Handles faculty and classroom conflicts through custom conflict-resolution logic, generating conflict-free timetables efficiently for academic institutions.",
+      techStack: ["Python", "OR-Tools", "Django", "Constraint Optimization"],
+      icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14L5 13.18V17l7 4 7-4v-3.82L12 17z"/></svg>,
+      github: "https://github.com/chethankotian2005/Academic-Setu",
+      demo: null,
+    },
+    {
       title: "Fake News Management System",
       description: "An advanced ML-powered platform that combats misinformation by detecting and classifying fake news articles with high accuracy. Utilizes NLP techniques, TensorFlow models, and scikit-learn algorithms to analyze text patterns, source credibility, and linguistic features. Includes a Streamlit dashboard for real-time news verification and content authenticity scoring.",
       techStack: ["Python", "Flask", "Sklearn", "NLP", "TensorFlow", "Streamlit"],
@@ -48,7 +56,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-deep-black">
+    <div className="min-h-screen pt-20 bg-white dark:bg-deep-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Page Header */}
         <motion.div
