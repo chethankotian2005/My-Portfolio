@@ -246,7 +246,7 @@ This project is open source and available for personal use.
 ## 🤝 Contact
 
 **Chethan V Kotian**
-- Email: chethanvkotian@gmail.com
+- Email: kotianchethan4@gmail.com
 - GitHub: [@chethanvkotian](https://github.com/chethanvkotian)
 - LinkedIn: [chethanvkotian](https://linkedin.com/in/chethanvkotian)
 
