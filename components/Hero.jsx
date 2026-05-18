@@ -280,11 +280,11 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center"
           >
             <div>
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">10+</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">12+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Projects Built</div>
             </div>
             <div>
-              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">5+</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">8+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Hackathons</div>
             </div>
             <div>

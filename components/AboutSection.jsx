@@ -141,6 +141,30 @@ export default function AboutSection() {
         >
           {[
             {
+              icon: <span className="text-2xl">🏆</span>,
+              title: "Award of Excellence — Build for Bengaluru (National Hackathon)",
+              company: "Google Developer Groups Bengaluru × Rotary International Bengaluru",
+              date: "April 26, 2026",
+              description: "Won the Award of Excellence at this national-level hackathon for VoiceGuru — a hyper-personalized, voice-first AI tutoring platform built for Karnataka State Board and CBSE students. The platform delivers multilingual, curriculum-accurate tutoring with adaptive difficulty, offline caching, gamification, and automated parent reporting via WhatsApp.",
+              color: "primary-indigo",
+            },
+            {
+              icon: <span className="text-2xl">🥈</span>,
+              title: "2nd Place — Hack.Algo (National Blockchain Hackathon)",
+              company: "REVA University × Google Developer Group × AlgoBharath (Reva Rift)",
+              date: "April 11, 2026",
+              description: "Secured 2nd place and a $200 cash prize for PromptGate — an AI-powered payment gateway on Algorand TestNet that converts LLM inferences into verifiable on-chain transactions, demonstrating real-world AI monetization and decentralized trust infrastructure.",
+              color: "secondary-purple",
+            },
+            {
+              icon: <span className="text-2xl">🥈</span>,
+              title: "2nd Place — TechShowcase 2026 (Hobby Project Exhibition)",
+              company: "SMVITM",
+              date: "2026",
+              description: "Secured 2nd place among 60+ participating teams at the institution's annual hobby project exhibition for VoiceGuru. Received valuable feedback from judges on improving the project for wider societal impact.",
+              color: "success-emerald",
+            },
+            {
               icon: (
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
@@ -236,7 +260,7 @@ export default function AboutSection() {
               description: "Managed promotional short films and photography initiatives at SMVITM events. Known for creative direction, scripting, and event visual documentation.",
               color: "secondary-purple",
             }
-          ].map((item, index) => (
+          ].map((item, index, items) => (
             <motion.div
               key={index}
               variants={{
@@ -251,7 +275,7 @@ export default function AboutSection() {
               className="relative pl-12 group"
             >
               {/* Connecting Line */}
-              {index < 7 && (
+              {index < items.length - 1 && (
                 <motion.div 
                   initial={{ height: 0, opacity: 0 }}
                   whileInView={{ height: '100%', opacity: 1 }}

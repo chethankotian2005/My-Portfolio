@@ -6,6 +6,26 @@ import ProjectCard from '@/components/ProjectCard';
 export default function Projects() {
   const projects = [
     {
+      title: "VoiceGuru",
+      badge: "🏆 Award of Excellence — Build for Bengaluru",
+      tagline: "Hyper-personalized, voice-first AI tutoring for State Board & CBSE students",
+      description: "VoiceGuru transforms learning with multilingual voice interaction (Kannada, Hindi, Tamil, English), an adaptive difficulty engine that classifies students as Beginner/Intermediate/Advanced, dynamic syllabus-aligned responses, a smart offline library with SQLite caching, gamified progress with badges and streaks, automated WhatsApp parent reports via Twilio, and a Vision Solver for homework images.",
+      techStack: ["Flutter", "FastAPI", "Google Gemini 2.5 Flash", "Firebase", "Twilio", "SQLite"],
+      icon: <span className="text-7xl">🏆</span>,
+      github: "https://github.com/chethankotian2005/VoiceGuru",
+      extraLink: { label: "Download App", href: "https://drive.google.com/drive/folders/1qzCmSYsBsvorU_Q25txpOWG18jPm9yEa" },
+    },
+    {
+      title: "PromptGate",
+      badge: "🥈 2nd Place — Hack.Algo National Hackathon · $200 Prize",
+      tagline: "AI prompt inference meets Algorand on-chain escrow settlement",
+      description: "PromptGate gates LLM responses behind Algorand TestNet micropayments. Features include on-chain escrow (lock → release → payout), complexity-based auto model selection across Spark Lite / Balanced Core / Thorough Pro, publisher registration with pricing models, reputation & leaderboard tracking, a 3-stage autonomous pipeline (Research → Analysis → Summary), x402 payment challenge endpoints, and QR-based TestNet account verification.",
+      techStack: ["FastAPI", "React", "Ollama", "Algorand SDK", "AlgoKit"],
+      icon: <span className="text-7xl">🥈</span>,
+      github: "https://github.com/chethankotian2005/PromptGate",
+      demo: null,
+    },
+    {
       title: "CliniQ",
       description: "An intelligent hospital management system that revolutionizes patient care through AI-driven appointment scheduling. The system prioritizes patients based on urgency and medical conditions, integrating real-time notifications via Twilio API. Features include smart queue management, doctor availability tracking, and automated patient communication to reduce wait times and improve healthcare delivery.",
       techStack: ["React", "Firebase", "Python", "AI Chatbot", "Twilio API"],

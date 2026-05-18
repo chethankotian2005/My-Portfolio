@@ -30,7 +30,7 @@ export default function NovaChatbot() {
   );
 
   const sendMessage = async (textOverride = null) => {
-    const userText = (textOverride ?? input).trim();
+    const userText = typeof textOverride === 'string' ? textOverride.trim() : input.trim();
     if (!userText || isLoading) return;
 
     const userMessage = { role: 'user', content: userText };
@@ -199,7 +199,7 @@ export default function NovaChatbot() {
                 />
                 <button
                   type="button"
-                  onClick={sendMessage}
+                  onClick={() => sendMessage()}
                   disabled={!canSend}
                   className="self-end px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110 transition"
                 >
