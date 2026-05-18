@@ -5,43 +5,19 @@ import { motion } from 'framer-motion';
 const skillCategories = [
   {
     title: 'AI & ML',
-    skills: [
-      { name: 'TensorFlow', level: 85 },
-      { name: 'PyTorch', level: 80 },
-      { name: 'Scikit-learn', level: 90 },
-      { name: 'NLP', level: 75 },
-    ],
-    color: 'from-white to-zinc-400'
+    skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'NLP', 'Ollama', 'Gemini API'],
   },
   {
-    title: 'Mobile Development',
-    skills: [
-      { name: 'Flutter', level: 90 },
-      { name: 'React Native', level: 80 },
-      { name: 'Android', level: 85 },
-      { name: 'iOS', level: 75 },
-    ],
-    color: 'from-zinc-300 to-zinc-500'
+    title: 'Mobile',
+    skills: ['Flutter', 'React Native', 'Android', 'SQLite'],
   },
   {
-    title: 'Web Development',
-    skills: [
-      { name: 'React/Next.js', level: 92 },
-      { name: 'Node.js', level: 88 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Tailwind CSS', level: 95 },
-    ],
-    color: 'from-white to-zinc-400'
+    title: 'Web',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'FastAPI', 'Django'],
   },
   {
     title: 'Tools & Cloud',
-    skills: [
-      { name: 'Firebase', level: 90 },
-      { name: 'Git/GitHub', level: 92 },
-      { name: 'Docker', level: 75 },
-      { name: 'AWS', level: 70 },
-    ],
-    color: 'from-zinc-300 to-zinc-500'
+    skills: ['Firebase', 'Git/GitHub', 'Docker', 'Supabase', 'Redis', 'Vercel'],
   },
 ];
 
@@ -60,7 +36,7 @@ export default function SkillsVisualization() {
             Technical Expertise
           </h2>
           <p className="text-text-secondary text-base sm:text-lg">
-            Mastery across multiple domains
+            Proficiency across multiple domains
           </p>
         </motion.div>
 
@@ -72,38 +48,20 @@ export default function SkillsVisualization() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
-              className="bg-gray-50 dark:bg-secondary-black rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray hover:border-primary-indigo/50 transition-all duration-300"
+              className="bg-gray-50 dark:bg-secondary-black rounded-2xl p-6 border border-gray-200 dark:border-gray hover:border-primary-indigo/50 transition-all duration-300"
             >
-              <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-5 sm:mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
                 {category.title}
               </h3>
-              
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-text-secondary font-medium">
-                        {skill.name}
-                      </span>
-                      <span className="text-text-secondary font-semibold">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    
-                    <div className="h-2 bg-gray-200 dark:bg-card-black rounded-full overflow-hidden">
-                      <motion.div
-                        className={`h-full bg-gradient-to-r ${category.color}`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ 
-                          delay: categoryIndex * 0.1 + skillIndex * 0.1,
-                          duration: 1,
-                          ease: 'easeOut'
-                        }}
-                      />
-                    </div>
-                  </div>
+
+              <div className="flex flex-wrap gap-3">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center rounded-full border border-gray-200 dark:border-border-gray bg-white dark:bg-card-black px-3 py-2 text-sm text-gray-700 dark:text-text-secondary shadow-sm"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </motion.div>

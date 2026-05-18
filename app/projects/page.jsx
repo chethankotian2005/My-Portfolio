@@ -11,7 +11,14 @@ export default function Projects() {
       tagline: "Hyper-personalized, voice-first AI tutoring for State Board & CBSE students",
       description: "VoiceGuru transforms learning with multilingual voice interaction (Kannada, Hindi, Tamil, English), an adaptive difficulty engine that classifies students as Beginner/Intermediate/Advanced, dynamic syllabus-aligned responses, a smart offline library with SQLite caching, gamified progress with badges and streaks, automated WhatsApp parent reports via Twilio, and a Vision Solver for homework images.",
       techStack: ["Flutter", "FastAPI", "Google Gemini 2.5 Flash", "Firebase", "Twilio", "SQLite"],
-      icon: <span className="text-7xl">🏆</span>,
+      icon: (
+        <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 3.5a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-5 0v-6A2.5 2.5 0 0 1 12 3.5z" />
+          <path d="M19 10.5v1.5a7 7 0 0 1-14 0v-1.5" />
+          <path d="M12 18v4" />
+          <path d="M8 22h8" />
+        </svg>
+      ),
       github: "https://github.com/chethankotian2005/VoiceGuru",
       extraLink: { label: "Download App", href: "https://drive.google.com/drive/folders/1qzCmSYsBsvorU_Q25txpOWG18jPm9yEa" },
     },
@@ -21,7 +28,11 @@ export default function Projects() {
       tagline: "AI prompt inference meets Algorand on-chain escrow settlement",
       description: "PromptGate gates LLM responses behind Algorand TestNet micropayments. Features include on-chain escrow (lock → release → payout), complexity-based auto model selection across Spark Lite / Balanced Core / Thorough Pro, publisher registration with pricing models, reputation & leaderboard tracking, a 3-stage autonomous pipeline (Research → Analysis → Summary), x402 payment challenge endpoints, and QR-based TestNet account verification.",
       techStack: ["FastAPI", "React", "Ollama", "Algorand SDK", "AlgoKit"],
-      icon: <span className="text-7xl">🥈</span>,
+      icon: (
+        <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+        </svg>
+      ),
       github: "https://github.com/chethankotian2005/PromptGate",
       demo: null,
     },
