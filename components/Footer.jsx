@@ -76,7 +76,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-black dark:text-text-primary font-bold text-lg">Chethan V Kotian</h3>
-                <p className="text-gray-600 dark:text-text-muted text-sm">Full Stack Developer</p>
+                <p className="text-gray-600 dark:text-text-muted text-sm">AI & ML Developer</p>
               </div>
             </div>
             <p className="text-gray-700 dark:text-text-secondary text-sm max-w-xs italic">

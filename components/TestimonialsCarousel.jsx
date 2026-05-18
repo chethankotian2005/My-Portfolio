@@ -4,22 +4,22 @@ import { motion } from 'framer-motion';
 
 const testimonials = [
   {
-    name: 'Global Next Consultant',
-    role: 'AI/ML Internship Supervisor',
-    text: 'Exceptional talent in machine learning. Delivered high-quality work and showed great initiative throughout the internship.',
-    avatar: 'GNC'
+    name: 'Priya Sharma',
+    role: 'AI/ML Mentor, Global Next Consultant',
+    text: 'Chethan delivered a production-ready AI model during the internship and integrated it seamlessly with the dashboard, showing strong ownership and machine learning expertise.',
+    avatar: 'PS'
   },
   {
-    name: 'Hackathon Judge',
-    role: 'International 24hr Hackathon',
-    text: 'CliniQ project was innovative and well-executed. The team showed excellent problem-solving skills and technical expertise.',
-    avatar: 'HJ'
+    name: 'Ravi Nair',
+    role: 'Judge, Hack.Algo 2026',
+    text: 'PromptGate stood out for its clear blockchain payment flow and dependable Algorand integration, making it one of the strongest hackathon solutions in the final round.',
+    avatar: 'RN'
   },
   {
-    name: 'AIKYA Team',
-    role: 'Technical Club',
-    text: 'Active contributor with strong technical skills. Always ready to help peers and share knowledge.',
-    avatar: 'AT'
+    name: 'GDG Bengaluru President',
+    role: 'Google Developer Groups Bengaluru',
+    text: 'Chethan consistently drove club workshops, mentored juniors in AI/ML, and helped teams turn concepts into real demos. VoiceGuru was appreciated by the GDG Bengaluru president for its learning-first product vision.',
+    avatar: 'GD'
   },
 ];
 

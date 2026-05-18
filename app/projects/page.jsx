@@ -1,9 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import ProjectCard from '@/components/ProjectCard';
 
 export default function Projects() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = ['All', 'AI/ML', 'Mobile', 'Web', 'Hackathon'];
+
   const projects = [
     {
       title: "VoiceGuru",
@@ -19,6 +23,7 @@ export default function Projects() {
           <path d="M8 22h8" />
         </svg>
       ),
+      categories: ['Mobile', 'Hackathon'],
       github: "https://github.com/chethankotian2005/VoiceGuru",
       extraLink: { label: "Download App", href: "https://drive.google.com/drive/folders/1qzCmSYsBsvorU_Q25txpOWG18jPm9yEa" },
     },
@@ -33,6 +38,7 @@ export default function Projects() {
           <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
         </svg>
       ),
+      categories: ['AI/ML', 'Hackathon'],
       github: "https://github.com/chethankotian2005/PromptGate",
       demo: null,
     },
@@ -41,6 +47,7 @@ export default function Projects() {
       description: "An intelligent hospital management system that revolutionizes patient care through AI-driven appointment scheduling. The system prioritizes patients based on urgency and medical conditions, integrating real-time notifications via Twilio API. Features include smart queue management, doctor availability tracking, and automated patient communication to reduce wait times and improve healthcare delivery.",
       techStack: ["React", "Firebase", "Python", "AI Chatbot", "Twilio API"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>,
+      categories: ['AI/ML', 'Hackathon'],
       github: "https://github.com/chethankotian2005/CliniQ",
       demo: null,
     },
@@ -49,6 +56,7 @@ export default function Projects() {
       description: "A comprehensive safety-first navigation system powered by machine learning algorithms. Analyzes real-time crime data, street lighting conditions, pedestrian traffic, and user feedback to provide the safest possible routes. Integrates with Google Maps API to offer multiple route options with safety ratings, making urban navigation secure for everyone, especially during night hours.",
       techStack: ["Python", "ML", "Google Maps API", "Firebase"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>,
+      categories: ['AI/ML'],
       github: "https://github.com/chethankotian2005/SafeRoute",
       demo: null,
     },
@@ -57,6 +65,7 @@ export default function Projects() {
       description: "AI-based timetable generation system that uses constraint optimization to create practical schedules. Handles faculty and classroom conflicts through custom conflict-resolution logic, generating conflict-free timetables efficiently for academic institutions.",
       techStack: ["Python", "OR-Tools", "Django", "Constraint Optimization"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14L5 13.18V17l7 4 7-4v-3.82L12 17z"/></svg>,
+      categories: ['Web'],
       github: "https://github.com/chethankotian2005/Academic-Setu",
       demo: null,
     },
@@ -65,26 +74,33 @@ export default function Projects() {
       description: "An advanced ML-powered platform that combats misinformation by detecting and classifying fake news articles with high accuracy. Utilizes NLP techniques, TensorFlow models, and scikit-learn algorithms to analyze text patterns, source credibility, and linguistic features. Includes a Streamlit dashboard for real-time news verification and content authenticity scoring.",
       techStack: ["Python", "Flask", "Sklearn", "NLP", "TensorFlow", "Streamlit"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>,
+      categories: ['AI/ML'],
       github: "https://github.com/chethankotian2005/Fake_News_Prediction",
       demo: null,
     },
     {
       title: "AI Chatbot",
-      description: "An intelligent conversational assistant built with advanced Natural Language Processing capabilities. Provides instant query resolution, customer support automation, and contextual conversations. Features include intent recognition, multi-turn dialogue management, and Firebase integration for persistent chat history. Perfect for businesses looking to enhance customer engagement and support efficiency.",
+      description: "A context-aware conversational assistant built with NLP and intent recognition. Supports multi-turn dialogue, persistent chat history via Firebase, and automated response flows. Built as an exploration of dialogue management before LLM APIs became mainstream.",
       techStack: ["Python", "NLP", "Tkinter", "Firebase"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>,
+      categories: ['AI/ML'],
       github: "https://github.com/chethankotian2005/CHATBOT",
       demo: null,
     },
     {
       title: "Event Image Finder",
-      description: "Hackathon-winning project (Hackotsava 2025) that leverages computer vision and facial recognition to automatically detect and retrieve event photos. Upload your selfie and the system finds all event photos containing you using deep learning models. Features include batch processing, cloud storage via Firebase, and a React-based gallery interface for seamless photo discovery.",
+      description: "Hackathon project that leverages computer vision and facial recognition to automatically detect and retrieve event photos. Upload your selfie and the system finds all event photos containing you using deep learning models, batch processing, and Firebase-backed storage.",
       techStack: ["Python", "Computer Vision", "Firebase", "React"],
       icon: <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>,
+      categories: ['AI/ML', 'Hackathon'],
       github: "https://github.com/chethankotian2005/Hackotsava-2025",
       demo: null,
     },
   ];
+
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter((project) => project.categories?.includes(selectedCategory));
 
   return (
     <div className="min-h-screen pt-20 bg-white dark:bg-deep-black">
@@ -114,9 +130,23 @@ export default function Projects() {
           </motion.p>
         </motion.div>
 
+        {/* Project Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-300 ${selectedCategory === category ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-gray-100 text-gray-700 dark:bg-slate-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'}`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         {/* Projects Grid - 2 columns on desktop, 1 on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>

@@ -45,39 +45,15 @@ export default function AboutSection() {
       >
         <div className="space-y-6">
           <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
-            I'm currently pursuing my Bachelor of Engineering in{' '}
-            <span className="text-black dark:text-primary-indigo font-semibold hover:text-gray-600 dark:hover:text-secondary-purple transition-colors cursor-pointer">
-              Artificial Intelligence & Machine Learning
-            </span>{' '}
-            from Shri Madhwa Vadiraja Institute of Technology and Management (SMVITM). My journey in tech has been driven by a passion for 
-            creating innovative solutions that solve real-world problems.
-          </p>
-          
-          <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
-            As a developer, I specialize in{' '}
-            <span className="relative inline-block group">
-              <span className="text-black dark:text-primary-indigo font-semibold">AI/ML applications</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </span>
-            ,{' '}
-            <span className="relative inline-block group">
-              <span className="text-black dark:text-primary-indigo font-semibold">mobile development</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </span>
-            , and{' '}
-            <span className="relative inline-block group">
-              <span className="text-black dark:text-primary-indigo font-semibold">web technologies</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </span>
-            . I thrive in hackathon environments where creativity meets technical expertise, and I've participated in multiple competitive coding events and tech competitions.
+            I'm a third-year B.E. student in AI & Machine Learning at SMVITM, Bantakal — building things that actually work, not just projects for grades.
           </p>
 
           <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
-            Beyond coding, I'm passionate about building products that make a{' '}
-            <span className="text-emerald-600 dark:text-success-emerald font-semibold">meaningful impact</span>. Whether it's developing emergency 
-            medical apps, creating AI-powered mental health solutions, or exploring cutting-edge technologies like{' '}
-            <span className="text-gray-600 dark:text-secondary-purple font-semibold">computer vision</span> and{' '}
-            <span className="text-gray-600 dark:text-secondary-purple font-semibold">NLP</span>, I'm always eager to learn and push the boundaries of what's possible.
+            I've won national hackathons including the Award of Excellence at Build for Bengaluru (organized by Google Developer Groups) and 2nd place at Hack.Algo, a blockchain hackathon by REVA University. My work spans voice-first mobile apps, AI payment gateways on Algorand, and full-stack dashboards used in production.
+          </p>
+
+          <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
+            Outside hackathons, I lead the SMVITM Media Team, shoot photography for college events, and mentor juniors in AI/ML. I like building things people actually use.
           </p>
         </div>
 
@@ -111,6 +87,32 @@ export default function AboutSection() {
               ></motion.div>
             </motion.button>
           </a>
+        </div>
+      </motion.div>
+
+      {/* Education Section */}
+      <motion.div variants={itemVariants} className="card-dark p-8 sm:p-10 lg:p-12 card-hover">
+        <div className="space-y-6">
+          <div className="flex items-center gap-3 mb-6">
+            <svg className="w-8 h-8 text-primary-indigo" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L1 7l11 5 11-5-11-5zm0 7.02L4.17 7 12 3.98 19.83 7 12 9.02zM3 9.14v5.36l9 4.09 9-4.09V9.14l-9 4.09-9-4.09z" />
+            </svg>
+            <h3 className="text-3xl font-bold gradient-text">Education</h3>
+          </div>
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
+              Degree: B.E. in Artificial Intelligence & Machine Learning
+            </p>
+            <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
+              Institution: Shri Madhwa Vadiraja Institute of Technology and Management (SMVITM), Bantakal
+            </p>
+            <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
+              Duration: 2023 to 2027
+            </p>
+            <p className="text-gray-700 dark:text-text-secondary text-lg leading-relaxed">
+              Highlight: Active hackathon participant, Media Team lead, AIKYA Technical Club member
+            </p>
+          </div>
         </div>
       </motion.div>
 
@@ -218,7 +220,7 @@ export default function AboutSection() {
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
               ),
-              title: "🥈 2nd Place - International 24-Hour Hackathon",
+              title: "🥈 2nd Place - Inter-college 24-Hour Hackathon",
               company: "CliniQ Project",
               date: "2025",
               description: "Built CliniQ, an AI-powered hospital queue and appointment management system with teleconsultation and chatbot integration. Recognized for innovation, design, and problem-solving impact.",

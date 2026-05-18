@@ -12,14 +12,19 @@ import NovaChatbot from '@/components/NovaChatbot';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Chethan V Kotian - AI & Mobile Developer',
-  description: 'Portfolio of Chethan V Kotian, a passionate AI & Mobile Developer and hackathon enthusiast. Explore my projects, skills, and experience in building innovative solutions.',
-  keywords: 'Chethan V Kotian, AI Developer, Mobile Developer, Android Developer, Hackathon, Portfolio, Web Developer, SMVITM',
+  title: 'Chethan V Kotian - AI & ML Developer',
+  description: 'Portfolio of Chethan V Kotian — AI & ML developer, national hackathon winner (Award of Excellence, Build for Bengaluru), and builder of voice-first apps and blockchain payment systems. Based in Udupi, Karnataka.',
+  keywords: 'Chethan V Kotian, AI Developer, ML Developer, Hackathon Winner, Portfolio, Voice Interfaces, Blockchain, SMVITM',
   authors: [{ name: 'Chethan V Kotian' }],
   openGraph: {
-    title: 'Chethan V Kotian - AI & Mobile Developer',
-    description: 'Portfolio showcasing innovative projects in AI, mobile, and web development',
+    title: 'Chethan V Kotian - AI & ML Developer',
+    description: 'Portfolio of Chethan V Kotian — AI & ML developer, national hackathon winner, and builder of voice-first apps and blockchain payment systems.',
     type: 'website',
+    images: [{ url: '/profile.png', width: 400, height: 400, alt: 'Chethan V Kotian' }],
+  },
+  twitter: {
+    card: 'summary',
+    images: ['/profile.png'],
   },
 };
 

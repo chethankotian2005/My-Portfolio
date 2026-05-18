@@ -2,9 +2,7 @@
 
 import { motion } from 'framer-motion';
 import AboutSection from '@/components/AboutSection';
-import SkillsGrid from '@/components/SkillsGrid';
 import StatsSection from '@/components/StatsSection';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 
 export default function About() {
   return (
@@ -33,22 +31,7 @@ export default function About() {
           <AboutSection />
         </div>
 
-        {/* Skills Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-center gradient-text mb-12">
-            Skills & Technologies
-          </h2>
-          <SkillsGrid />
-        </motion.div>
-
-        {/* Testimonials Section */}
-        <div className="mt-20">
-          <TestimonialsCarousel />
-        </div>
+        {/* Skills section removed to avoid duplication with Home */}
       </div>
     </div>
   );
