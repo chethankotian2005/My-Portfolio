@@ -274,7 +274,6 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* Social Proof / Stats (Optional) */}
           {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
