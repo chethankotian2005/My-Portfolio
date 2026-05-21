@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const stats = [
   { number: 12, suffix: '+', label: 'Projects Built', duration: 2 },
-  { number: 3, suffix: '', label: 'Hackathon Wins', duration: 1.5 },
+  { number: 5, suffix: '', label: 'Hackathon Wins', duration: 1.5 },
   { number: 15, suffix: '+', label: 'Technologies', duration: 2.5 },
 ];
 

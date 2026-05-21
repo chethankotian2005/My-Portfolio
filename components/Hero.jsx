@@ -9,7 +9,7 @@ export default function Hero() {
   const [typedText, setTypedText] = useState('');
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const fullText = 'I build AI-powered apps, voice interfaces, and full-stack systems — and I\'ve won national hackathons doing it.';
+  const fullText = 'AI & ML developer - voice interfaces, mobile apps, and full-stack systems.';
 
   // Generate particles only once on mount to avoid hydration issues
   const particles = useMemo(() => {
@@ -212,13 +212,12 @@ export default function Hero() {
             </h2>
           </motion.div>
 
-          {/* Description */}
+          {/* Supporting paragraph */}
           <motion.p
             variants={itemVariants}
             className="text-base sm:text-xl text-gray-600 dark:text-gray-400 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-1"
           >
-            I build AI-powered apps, voice interfaces, and full-stack systems for real users —
-            with a track record of national hackathon wins and production-ready delivery.
+            Final-year B.E. student at SMVITM, building production-ready AI and mobile applications.
           </motion.p>
 
           {/* CTA Buttons */}
