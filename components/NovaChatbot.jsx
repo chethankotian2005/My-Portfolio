@@ -41,14 +41,20 @@ export default function NovaChatbot() {
     setIsLoading(true);
 
     try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+
       const response = await fetch('/api/nova', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userText,
-          history: conversationForApi.slice(-10),
+          history: conversationForApi.slice(-5),
         }),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeout);
 
       const data = await response.json();
 
@@ -63,12 +69,15 @@ export default function NovaChatbot() {
 
       setMessages((prev) => [...prev, { role: 'assistant', content: assistantText }]);
     } catch (error) {
+      const errorMsg = error?.name === 'AbortError' 
+        ? 'Nova is taking too long to respond. Switching to local mode...'
+        : error.message || 'Nova is unavailable right now. Please try again in a moment.';
+      
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content:
-            error.message || 'Nova is unavailable right now. Please try again in a moment.',
+          content: errorMsg,
         },
       ]);
     } finally {
@@ -116,9 +125,9 @@ export default function NovaChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="mb-4 w-[calc(100vw-1.5rem)] sm:w-[92vw] max-w-md max-h-[calc(100vh-13rem)] sm:max-h-[calc(100vh-16rem)] md:max-h-[calc(100vh-17rem)] rounded-3xl border border-gray-200 dark:border-border-gray bg-white/95 dark:bg-card-black/95 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col"
+            className="mb-4 w-[calc(100vw-1.5rem)] sm:w-[92vw] max-w-md max-h-[calc(100vh-13rem)] sm:max-h-[calc(100vh-16rem)] md:max-h-[calc(100vh-17rem)] rounded-3xl border border-gray-200 dark:border-white/10 dark:border-t-2 dark:border-t-white/20 bg-white/95 dark:bg-zinc-900 backdrop-blur-xl shadow-2xl dark:shadow-xl dark:shadow-black/60 overflow-hidden flex flex-col"
           >
-            <div className="px-4 py-3 border-b border-gray-200 dark:border-border-gray bg-gradient-to-r from-gray-50 to-white dark:from-secondary-black dark:to-card-black flex items-center justify-between">
+            <div className="px-4 py-3 border-b border-gray-200 dark:border-b dark:border-white/10 bg-gradient-to-r from-gray-50 to-white dark:from-secondary-black dark:to-card-black flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="h-8 w-8 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center text-xs font-bold">
                   N
@@ -141,7 +150,7 @@ export default function NovaChatbot() {
               </button>
             </div>
 
-            <div className="px-4 pt-3 pb-2 bg-white dark:bg-card-black border-b border-gray-200/80 dark:border-border-gray">
+            <div className="px-4 pt-3 pb-2 bg-white dark:bg-zinc-900 border-b border-gray-200/80 dark:border-b dark:border-white/10">
               <div className="flex flex-wrap gap-2">
                 {QUICK_PROMPTS.map((prompt) => (
                   <button
@@ -157,7 +166,7 @@ export default function NovaChatbot() {
               </div>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white dark:bg-card-black">
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white dark:bg-zinc-900">
               {messages.map((msg, index) => {
                 const isUser = msg.role === 'user';
                 return (
@@ -187,7 +196,7 @@ export default function NovaChatbot() {
               )}
             </div>
 
-            <div className="p-3 border-t border-gray-200 dark:border-border-gray bg-white dark:bg-card-black">
+            <div className="p-3 border-t border-gray-200 dark:border-t dark:border-white/10 bg-white dark:bg-zinc-900">
               <div className="flex gap-2">
                 <textarea
                   rows={2}
@@ -195,7 +204,7 @@ export default function NovaChatbot() {
                   onChange={(event) => setInput(event.target.value)}
                   onKeyDown={onKeyDown}
                   placeholder="Ask about projects, architecture, complexity, or research..."
-                  className="flex-1 resize-none rounded-xl border border-gray-300 dark:border-border-gray bg-white dark:bg-secondary-black px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white/80"
+                  className="flex-1 resize-none rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-zinc-800 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white/80"
                 />
                 <button
                   type="button"

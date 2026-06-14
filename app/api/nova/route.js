@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import { buildNovaSystemPrompt } from '@/lib/novaKnowledge';
 import { buildNovaFallbackReply } from '@/lib/novaFallback';
 
-const QWEN_MODEL = process.env.NOVA_MODEL || 'qwen/qwen3.5-122b-a10b';
-const NVIDIA_CHAT_URL = 'https://integrate.api.nvidia.com/v1/chat/completions';
+const GROQ_MODEL = process.env.NOVA_MODEL || 'llama3-8b-8192';
+const GROQ_CHAT_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 function normalizeHistory(history = []) {
   return history
@@ -36,7 +36,7 @@ function formatAssistantReply(text) {
 
 export async function POST(request) {
   try {
-    const apiKey = process.env.NVIDIA_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
 
     const body = await request.json();
     const message = typeof body?.message === 'string' ? body.message.trim() : '';
@@ -61,18 +61,18 @@ export async function POST(request) {
     ];
 
     const payload = {
-      model: QWEN_MODEL,
+      model: GROQ_MODEL,
       messages,
-      max_tokens: 420,
+      max_tokens: 350,
       temperature: 0.65,
       top_p: 0.9,
       stream: false,
-      chat_template_kwargs: {
-        enable_thinking: false,
-      },
     };
 
-    const response = await fetch(NVIDIA_CHAT_URL, {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000); // 6 second timeout
+
+    const response = await fetch(GROQ_CHAT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,10 @@ export async function POST(request) {
       },
       body: JSON.stringify(payload),
       cache: 'no-store',
+      signal: controller.signal,
     });
+
+    clearTimeout(timeout);
 
     if (!response.ok) {
       return NextResponse.json({
@@ -101,7 +104,7 @@ export async function POST(request) {
       });
     }
 
-    return NextResponse.json({ reply, mode: 'qwen' });
+    return NextResponse.json({ reply, mode: 'groq' });
   } catch (error) {
     let message = '';
     try {
@@ -111,10 +114,12 @@ export async function POST(request) {
       message = '';
     }
 
+    const reason = error?.name === 'AbortError' ? 'api_timeout' : 'unexpected_server_error';
+
     return NextResponse.json({
       reply: formatAssistantReply(buildNovaFallbackReply(message)),
       mode: 'fallback',
-      reason: 'unexpected_server_error',
+      reason,
     });
   }
 }
