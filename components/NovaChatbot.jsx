@@ -21,6 +21,13 @@ export default function NovaChatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const chatRootRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isLoading, isOpen]);
 
   const canSend = input.trim().length > 0 && !isLoading;
 
@@ -170,8 +177,11 @@ export default function NovaChatbot() {
               {messages.map((msg, index) => {
                 const isUser = msg.role === 'user';
                 return (
-                  <div
+                  <motion.div
                     key={`${msg.role}-${index}`}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.2 }}
                     className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
@@ -183,17 +193,22 @@ export default function NovaChatbot() {
                     >
                       {msg.content}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
 
               {isLoading && (
-                <div className="flex justify-start">
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
                   <div className="rounded-2xl px-3.5 py-2.5 text-sm bg-gray-100 dark:bg-secondary-black text-gray-700 dark:text-text-secondary">
                     Nova is thinking...
                   </div>
-                </div>
+                </motion.div>
               )}
+              <div ref={messagesEndRef} />
             </div>
 
             <div className="p-3 border-t border-gray-200 dark:border-t dark:border-white/10 bg-white dark:bg-zinc-900">
